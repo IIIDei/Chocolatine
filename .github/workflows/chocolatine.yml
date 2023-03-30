@@ -9,8 +9,8 @@ on:
       - " ga-ignore-*"
 
 env:
-  MIRROR_URL:
-  EXECUTABLES:
+  MIRROR_URL: https://github.com/EpitechPromo2027/B-DOP-200-BDX-2-1-chocolatine-gaetan.dubernat
+  EXECUTABLES: "pushswap"
 
 jobs:
   check_coding_style:
