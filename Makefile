@@ -38,10 +38,18 @@ $(NAME):	$(OBJ)
 
 clean:
 	rm -f $(OBJ)
+	find -name "*.gc*" -delete
 
 fclean:	clean
-	rm -f $(NAME)
+	rm -f $(NAME) lib_testing
 
 re:	fclean all
 
-.PHONY = re fclean clean all
+compile_tests:
+		gcc -o lib_testing $(SRC) tests/lib_tests.c \
+		$(CPPFLAGS) -lcriterion
+
+tests_run:	compile_tests	\
+			./lib_testing
+
+.PHONY = re fclean clean all compile_tests tests_run
