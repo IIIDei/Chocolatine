@@ -3,10 +3,15 @@ run-name: ${{github.actor}} check my code
 on:
   push:
     branches-ignore:
-      - " ga-ignore-"
+      - " ga-ignore-*"
   pull_request:
     branches-ignore:
-      - " ga-ignore-"
+      - " ga-ignore-*"
+
+env:
+  MIRROR_URL:
+  EXECUTABLES:
+
 jobs:
   check_coding_style:
     runs-on: ubuntu-latest
@@ -89,6 +94,6 @@ jobs:
       - uses: pixta-dev/repository-mirroring-action@v1
         with:
           target_repo_url:
-            ${{ vars.MIRROR_URL }}
+            ${{ env.MIRROR_URL }}
           ssh_private_key:
-            ${{ secrets.GITLAB_SSH_PRIVATE_KEY }}
+            ${{ secrets.GIT_SSH_PRIVATE_KEY }}
